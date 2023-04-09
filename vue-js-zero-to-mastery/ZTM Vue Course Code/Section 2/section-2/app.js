@@ -7,6 +7,7 @@ const vm = Vue.createApp({ // vm = 'V'ue 'M'odel
     data() {
         return {
             firstName: 'John',
+            middleName: '',
             lastName: 'Doe',
             url: 'https://google.com',
             raw_url: '<a href="https://google.com" target="_blank">Google</a>',
@@ -16,13 +17,23 @@ const vm = Vue.createApp({ // vm = 'V'ue 'M'odel
     methods: {
         // cleaner to put the logic here in methods to clean up the template
         fullName() {
-            return `${this.firstName} ${this.lastName.toUpperCase()}` // proxy allows `this` to work (but breaks the use of arrow functions)
+            return `${this.firstName} ${this.middleName} ${this.lastName.toUpperCase()}` // proxy allows `this` to work (but breaks the use of arrow functions)
         },
         increment() {
             this.age++
         },
-        updateLastName (event) {
+        updateLastName (message, event) {
+            // prevent the default behavior of the event when overwriting the logic
+                // note: this is called automatically with '.prevent' on the binding itself and not needed here
+                // https://vuejs.org/guide/essentials/event-handling.html#event-modifiers
+            // event.preventDefault()  
+
+            // proceed with custom logic
+            console.log(message)
             this.lastName = event.target.value
+        },
+        updateMiddleName(event) {
+            this.middleName = event.target.value
         }
     }
 }).mount('#app')

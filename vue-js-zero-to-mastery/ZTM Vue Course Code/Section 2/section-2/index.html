@@ -33,17 +33,32 @@
         });
       -->
 
+      <!-- keyup will only trigger when the user hits a specific key (enter, here), not on every input like 'input' does -->
+        <!-- modifiers list: https://vuejs.org/guide/essentials/event-handling.html#key-modifiers-->
+        <!-- key code can be scraped with this: https://www.toptal.com/developers/keycode -->
+      <label>Middle Name</label><br>
+      <input type="text" @keyup.enter="updateMiddleName" /><br><br>
+
       <label>Last Name (normal v-model binding)</label><br>
       <input type="test" v-model="lastName"/><br><br>
 
       <!-- binding the value and the input events manually gives you more control over the logic than just using v-model -->
       <label>Last Name (binding the value manually)</label><br>
-      <input type="test" :value="lastName" @input="updateLastName"/><br><br>
+      <input type="test" :value="lastName" 
+        @input.prevent="updateLastName('last name event triggered', $event)"/><br><br> <!-- if there are no arguments, $event is passed automagically -->
 
       <!-- v-on will add an event listener to this button. all js events are supported -->
       <button type="button" v-on:click="increment">Increment</button>  <!-- it can call a function -->
       <!-- the shorthand for 'v-on:' is '@' -->
-      <button type="button" @click="age--">Decrement</button> <!-- or it can directly evaluate an expression -->
+      <button type="button" @click="age--">Decrement</button><br> <!-- or it can directly evaluate an expression -->
+      
+      <!-- system modifiers can add conditions like holding the ctrl key -->
+        <!-- https://vuejs.org/guide/essentials/event-handling.html#key-modifiers -->
+      <button type="button" @click.shift="age--">Decrement only when hitting shift</button><br>
+
+      <!-- can be chained with multiple modifiers -->
+      <button type="button" @click.shift.meta="age--">Decrement only when hitting shift + ⌘</button><br>
+
       
     </div>
     <br><br>
