@@ -7,7 +7,33 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <!-- v-if will cause the entire element to be removed from the DOM if the condition is not true -->
+    <p v-if="mode == 1">Showing v-if directive content</p>
+
+    <!-- v-else-if must immediately follow the v-if, and can add new conditions -->
+    <h3 v-else-if="mode == 2">v-else-if</h3> <!-- doesn't need to be a 'p' tag, too, just same level -->
+    
+    <!-- the template element lets you combine lines; not a real html element, but Vue interprets it -->
+    <!-- the same concept works with divs, but that can break the page's structure (and css) -->
+    <template v-else>
+      <p>Bonus content - multiple lines</p>
+      <h2>v-else</h2>  
+    </template>
+
+    <!-- element is not removed from the DOM with v-show as false -->
+    <!-- instead, it gets a 'display: none' styling added to it -->
+    <i v-show="mode == 1">v-show</i>
+
+    <select v-model="mode">
+      <option value="1">v-if</option>
+      <option value="2">v-else-if</option>
+      <option value="3">v-else</option>
+    </select>
+  </div>
+
+  <!-- v-if   - cheap on the load, expensive on the toggle -->
+  <!-- v-show - cheap on the toggle, expensive on the load -->
 
   <script src="https://unpkg.com/vue@next"></script>
   <script src="app.js"></script>
