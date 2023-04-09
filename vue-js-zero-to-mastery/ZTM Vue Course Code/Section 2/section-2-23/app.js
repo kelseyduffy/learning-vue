@@ -16,5 +16,12 @@ let vm = Vue.createApp({
         }
       ]
     }
+  },
+  methods: {
+    moveFirstToEnd() {
+      const first = this.people.shift()
+
+      this.people.push(first)
+    }
   }
 }).mount('#app')

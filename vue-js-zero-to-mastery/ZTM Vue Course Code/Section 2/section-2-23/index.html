@@ -8,10 +8,23 @@
 
 <body>
   <div id="app">
-    <button type="button" class="move">Move to Bottom</button>
-    <div class="card">
-      <h3>Name</h3>
-      <p>Message</p>
+    <button type="button" class="move" @click="moveFirstToEnd">Move to Bottom</button>
+    <div class="card" v-for="person in people">
+      <h3>{{ person.name }}</h3>
+      <p>{{ person.message }}</p>
+      <!-- this input field's values will not stay with the original card as the cards shuffle -->
+        <!-- this is a performance decision made by Vue -->
+      <input type="text" />
+    </div>
+
+    <!-- this replicate uses keys to make sure the items all stay together -->
+      <!-- key docs: https://vuejs.org/guide/essentials/list.html#maintaining-state-with-key -->
+    <div class="card" v-for="person in people" :key="person.name">
+      <h3>{{ person.name }}</h3>
+      <p>{{ person.message }}</p>
+      <!-- since the key exists, everything in the element is related to the key -->
+        <!-- since input is inside the element, it's moved along with it -->
+      <input type="text" />
     </div>
   </div>
 
