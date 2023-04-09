@@ -8,6 +8,7 @@
     
     <div id="app" v-cloak>
       <p>{{ fullName() }}</p>
+      <p>{{ fullNameAsComputedProp }}</p>
 
       <!-- normal href can't have expressions -->
       <p><a href="url" target="_blank">Google (doesnt work)</a></p> 
@@ -62,7 +63,7 @@
       <!-- can be chained with multiple modifiers -->
       <button type="button" @click.shift.meta="age--">Decrement only when hitting shift + ⌘</button><br>
 
-      <lable>Age</lable>
+      <label>Age</label>
       <input type="text" v-model="age" />string<br>
       <input type="number" v-model.number="age" />number<br> <!-- '.number' performs type conversion on the input -->
 
