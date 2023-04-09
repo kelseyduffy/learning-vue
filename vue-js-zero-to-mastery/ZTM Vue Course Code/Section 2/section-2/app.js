@@ -8,13 +8,21 @@ const vm = Vue.createApp({ // vm = 'V'ue 'M'odel
         return {
             firstName: 'John',
             lastName: 'Doe',
-            url: 'https://google.com'
+            url: 'https://google.com',
+            raw_url: '<a href="https://google.com" target="_blank">Google</a>',
+            age: 20
         }
     },
     methods: {
         // cleaner to put the logic here in methods to clean up the template
         fullName() {
             return `${this.firstName} ${this.lastName.toUpperCase()}` // proxy allows `this` to work (but breaks the use of arrow functions)
+        },
+        increment() {
+            this.age++
+        },
+        updateLastName (event) {
+            this.lastName = event.target.value
         }
     }
 }).mount('#app')

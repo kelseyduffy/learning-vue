@@ -15,10 +15,16 @@
       <p><a v-bind:href="url" target="_blank">Google</a></p>
       <!-- : is shorthand for v-bind -->
       <p><a :href="url" target="_blank">Google</a></p>
+      <!-- sending the entire <a> tag will resolve but wont rendered because of XSS protection -->
+      <p>{{ raw_url }}</p>
+      <!-- need to use the v-html directive instead -->
+      <p v-html="raw_url"></p>
+
+      <p>{{ age }}</p>
       <hr />
 
-      <label>First Name</label>
-      <input type="text" v-model="firstName"/> <!-- the v-model value is evaled as an expression -->
+      <label>First Name</label><br>
+      <input type="text" v-model="firstName"/><br> <!-- the v-model value is evaled as an expression -->
       <!-- v-model could be done with vanilla js:
         const input = document.getElementById("firstName");   <--- requires you to assign ids to each element manually
         input.addEventListener("keyup", function() {
@@ -27,8 +33,17 @@
         });
       -->
 
-      <label>Last Name</label>
-      <input type="test" v-model="lastName"/>
+      <label>Last Name (normal v-model binding)</label><br>
+      <input type="test" v-model="lastName"/><br><br>
+
+      <!-- binding the value and the input events manually gives you more control over the logic than just using v-model -->
+      <label>Last Name (binding the value manually)</label><br>
+      <input type="test" :value="lastName" @input="updateLastName"/><br><br>
+
+      <!-- v-on will add an event listener to this button. all js events are supported -->
+      <button type="button" v-on:click="increment">Increment</button>  <!-- it can call a function -->
+      <!-- the shorthand for 'v-on:' is '@' -->
+      <button type="button" @click="age--">Decrement</button> <!-- or it can directly evaluate an expression -->
       
     </div>
     <br><br>
