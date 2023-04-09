@@ -6,3 +6,8 @@ input[type="text"] {
   margin: 10px 0;
   display: block;
 }
+
+/* the directive is removed automatically by vue when it loads. so it will just be hidden while loading */
+[v-cloak] {
+  display: none;
+}

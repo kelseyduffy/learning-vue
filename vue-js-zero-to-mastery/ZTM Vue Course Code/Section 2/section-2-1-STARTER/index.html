@@ -5,8 +5,42 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
   </head>
   <body>
-    <div id="app"></div>
+    
+    <div id="app" v-cloak>
+      <p>{{ fullName() }}</p>
 
+      <!-- normal href can't have expressions -->
+      <p><a href="url" target="_blank">Google (doesnt work)</a></p> 
+      <!-- using v-bind allows you to -->
+      <p><a v-bind:href="url" target="_blank">Google</a></p>
+      <!-- : is shorthand for v-bind -->
+      <p><a :href="url" target="_blank">Google</a></p>
+      <hr />
+
+      <label>First Name</label>
+      <input type="text" v-model="firstName"/> <!-- the v-model value is evaled as an expression -->
+      <!-- v-model could be done with vanilla js:
+        const input = document.getElementById("firstName");   <--- requires you to assign ids to each element manually
+        input.addEventListener("keyup", function() {
+          const p = document.querySelector("p");
+          p.innerText = this.value;
+        });
+      -->
+
+      <label>Last Name</label>
+      <input type="test" v-model="lastName"/>
+      
+    </div>
+    <br><br>
+    
+    {{ firstName }} is not interpolated outside of the vue object
+    <div id="app2">
+      {{ `${firstName} ${lastName.toUpperCase()}` }} is second Vue app on the same page
+      <br>
+      {{ testVar }} testVar is not rendered because it's declared outside of the data object passed into the vue createApp
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
