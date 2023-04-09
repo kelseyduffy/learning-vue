@@ -9,10 +9,32 @@
 <body>
   <div id="app">
     <label>
-      <input type="checkbox" /> Purple
+      <input type="checkbox" v-model="isPurple" /> Purple
     </label>
 
-    <div class="circle">
+    <select v-model="selectedColor">
+      <option value="">White</option>
+      <option value="text-black">Black</option>
+      <option value="text-orange">Orange</option>
+    </select>
+
+    <!-- vue will merge multiple class tags -->
+    <div class="circle" :class="{ purple: isPurple }"> <!-- key is class name added if value is true -->
+      Hi!
+    </div>
+
+    <br><br>
+
+    <input type="number" v-model="size" />
+
+    <!-- this doesn't scale well in the template, so use a computed property -->
+      <!-- style prop: the key name is the CSS property being set -->
+          <!-- note: if the name has a '-', it can be used 'in-quotes' or switch toCamelCase and Vue will revert it back to-kebab-case -->
+      <!-- style binding: https://vuejs.org/guide/essentials/class-and-style.html#binding-inline-styles -->
+    <div class="circle" :class="[selectedColor, circle_classes]" :style="[
+      { width: size + 'px', height: size + 'px', lineHeight: size + 'px' }, 
+      { transform: 'rotate(30deg)' }
+    ]"> 
       Hi!
     </div>
   </div>
