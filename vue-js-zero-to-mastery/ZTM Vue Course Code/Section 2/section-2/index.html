@@ -21,6 +21,7 @@
       <p v-html="raw_url"></p>
 
       <p>{{ age }}</p>
+      <p>{{ typeof age }}</p> <!-- shows the data type switching with the v-model binding to input tag -->
       <hr />
 
       <label>First Name</label><br>
@@ -32,6 +33,8 @@
           p.innerText = this.value;
         });
       -->
+
+      <input type="text" v-model.lazy.trim="firstName"/>lazy updates<br> <!-- lazy modifier won't update the DOM until user moves away -->
 
       <!-- keyup will only trigger when the user hits a specific key (enter, here), not on every input like 'input' does -->
         <!-- modifiers list: https://vuejs.org/guide/essentials/event-handling.html#key-modifiers-->
@@ -59,7 +62,10 @@
       <!-- can be chained with multiple modifiers -->
       <button type="button" @click.shift.meta="age--">Decrement only when hitting shift + ⌘</button><br>
 
-      
+      <lable>Age</lable>
+      <input type="text" v-model="age" />string<br>
+      <input type="number" v-model.number="age" />number<br> <!-- '.number' performs type conversion on the input -->
+
     </div>
     <br><br>
     
