@@ -24,16 +24,13 @@
           <label>rotateZ: {{ rotation[2] }}deg; </label>
           <input type="range" min="-180" max="180" v-model.number="rotation[2]"/>
 
-          <button type="button" @click="reset">Reset</button>
-          <button type="button" @click="copy">Copy</button>
+          <button type="button" @click.prevent="reset">Reset</button>
+          <button type="button" @click.prevent="copy">Copy</button>
         </div>
       </section>
       <section class="output">
         <div class="box-container">
-          <div class="box" :style="[
-            { transform: rotationClassValues },
-            { perspective: boxPerspective }  
-        ]"></div>
+          <div class="box" :style="boxStyle"></div>
         </div>
       </section>
     </main>
