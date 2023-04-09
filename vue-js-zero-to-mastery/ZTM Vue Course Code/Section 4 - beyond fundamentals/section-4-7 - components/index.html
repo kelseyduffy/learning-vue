@@ -8,7 +8,9 @@
 
 <body>
   <div id="app">
-    {{ message }}
+    <hello-world></hello-world> <!-- inject the component as an html tag -->
+    <hello-world></hello-world> <!-- can have multiple copies of it -->
+    <hello-world /> <!-- can also be self closing if you want -->
   </div>
 
   <script src="https://unpkg.com/vue@next"></script>
