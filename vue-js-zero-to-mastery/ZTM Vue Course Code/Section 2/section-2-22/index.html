@@ -7,7 +7,51 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <div id="simpleArrayLooping">
+      <ul>
+        <!-- can use the value in expressions, tag values, etc -->
+        <li v-for="bird in birds" :class="bird">
+          {{ bird }}
+        </li>
+      </ul>
+
+      <ul>
+        <!-- can also grab the index -->
+        <li v-for="(bird, index) in birds" :class="bird">
+          there are {{ index }} different species of {{ bird }}ss
+        </li>
+      </ul>
+    </div>
+
+    <div id="arrayOfObjects">
+      <ul>
+        <!-- manually grab specific attributes of the objects -->
+        <li v-for="person in people">
+          <div>{{ person.age }}</div>
+          <div>{{ person.name }}</div>
+        </li>
+      </ul>
+      <ul>
+        <!-- nested for loops -->
+        <li v-for="person in people">
+          <div v-for="(value, key, index) in person">
+            {{ index }}. {{ key }} - {{value}}
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div id="filteringTheLists">
+      <ul>
+        <!-- track the items if they move around so you can reliably access item by key -->
+          <!-- list rendering: https://vuejs.org/guide/essentials/list.html#list-rendering -->
+        <li v-for="(bird, index) in birds" :class="bird" :key="bird">
+          there are {{ index }} different species of {{ bird }}ss
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/vue@next"></script>
   <script src="app.js"></script>
