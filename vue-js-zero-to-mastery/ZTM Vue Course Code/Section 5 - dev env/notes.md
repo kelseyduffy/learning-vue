@@ -19,8 +19,6 @@ Vite
         - `dist` folder created 
     - `npm run preview` // lets you run the website from the dist folder
 
-Webpack
-
 
 SASS
 - programming language for css
@@ -65,6 +63,10 @@ ESLint
 - docs: 
     - eslint: https://eslint.org/
     - eslint rules: https://eslint.org/docs/latest/rules/
+
+
+webpack
+- can use this instead of vite
 
 required background:
 - ES6
