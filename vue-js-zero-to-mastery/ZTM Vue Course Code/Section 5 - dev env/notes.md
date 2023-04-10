@@ -28,8 +28,8 @@ SASS
     - `npm install sass`
     - rename `style.css` to `style.scss`
 - docs: 
-    - sass: https://sass-lang.com/
-    - sass color: https://sass-lang.com/documentation/modules/color
+    - [sass](https://sass-lang.com/)
+    - [sass color](https://sass-lang.com/documentation/modules/color)
 
 
 PostCSS
@@ -44,8 +44,8 @@ PostCSS
     - postcss will post process this file and add the prefix because we `required` that library in the postcss.config.cjs
     - actual css that the browser is executing against will have both the `::placeholder` tag and a new `::-moz-placeholder` tag with the mozilla prefix
 - docs: 
-    - postcss: https://github.com/postcss/postcss
-    - postcss parts: https://www.postcss.parts/
+    - [postcss](https://github.com/postcss/postcss)
+    - [postcss parts](https://www.postcss.parts/)
 
 
 ESLint
@@ -61,12 +61,18 @@ ESLint
 - add a package.json script that autofixes errors:
     - `"lint": "eslint main.js --fix"`
 - docs: 
-    - eslint: https://eslint.org/
-    - eslint rules: https://eslint.org/docs/latest/rules/
+    - [eslint](https://eslint.org/)
+    - [eslint rules](https://eslint.org/docs/latest/rules/)
 
 
 webpack
 - can use this instead of vite
+- only js code is supported
+- more handson, has a higher learning curve
+- using it:
+    - `npm install` from the sample webpack directly to install the dependencies
+    - `npm run start` will execute `webpack --mode=development` 
+    - creates the `dist` folder with the bundled js and css files
 
 required background:
 - ES6
