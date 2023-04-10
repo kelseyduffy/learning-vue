@@ -1,3 +1,21 @@
+h1 {
+  color: #cc3244;
+
+  // h1 span
+  span {
+    color: blue;
+  }
+
+  // using the parent selector lets you say things like h1:hover within the nested style
+  &:hover {
+    color: darken(#cc3244, 15%)
+  }
+}
+
+// h1:hover {
+//   color: darken(#cc3244, 15%)
+// }
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
