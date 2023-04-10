@@ -51,7 +51,20 @@ PostCSS
 
 
 ESLint
-
+- enforces styling, such as using single quotes or double quotes
+- js is very open ended, so it's helpful to use a styling tool to enforce some style rules
+- not supported by vite automatically
+    - `npm install vite-plugin-eslint --save-dev --force` will add this support
+- create file called `vite.config.js` to add eslint to the vite instance
+- create file called `.eslintrc` to define the rules
+    - define the rules, environment, etc
+- install the `ESLint` extension to VS code
+    - now red lines will appear by errors
+- add a package.json script that autofixes errors:
+    - `"lint": "eslint main.js --fix"`
+- docs: 
+    - eslint: https://eslint.org/
+    - eslint rules: https://eslint.org/docs/latest/rules/
 
 required background:
 - ES6

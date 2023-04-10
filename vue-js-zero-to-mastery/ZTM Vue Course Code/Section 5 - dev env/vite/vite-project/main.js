@@ -1,5 +1,6 @@
 import './style.scss'
 import javascriptLogo from './javascript.svg'
+// eslint-disable-next-line import/no-absolute-path
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
 

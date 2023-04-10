@@ -1,0 +1,13 @@
+{
+    "rules": {
+        "quotes": "error", //could do off (default) or warn
+        "space-before-function-paren": "off"
+    },
+    "env": {
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2022, // version of javascript
+        "sourceType": "module"
+    }
+}
