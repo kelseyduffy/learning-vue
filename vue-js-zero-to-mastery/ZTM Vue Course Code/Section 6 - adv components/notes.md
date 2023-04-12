@@ -28,3 +28,19 @@ Globally:
 Locally: [Recommended]
 - can only be used in the component it's registered in
     - App.vue, in this case
+
+
+## Styling
+
+adding `scoped` to the style tag scopes the styling to just that component by marking the div and the style tag with a data hash
+
+installing sass
+- `npm install sass --save-dev`
+- add `lang="scss"` to the style tag to point it to use sass compiler
+
+## passing data between components
+
+A (root) -> B  
+|  
+v  
+C

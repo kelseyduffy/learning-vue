@@ -13,9 +13,9 @@ export default {
 }
 </script>
 
-<!-- scoped doc: https://vue-loader.vuejs.org/guide/scoped-css.html#scoped-css-->
-<style scoped>
-p {
-    color: red
+<!-- scoped doc: https://vue-loader.vuejs.org/guide/scoped-css.html#scoped-css -->
+<style scoped lang="scss">
+p:hover {
+    color: darken(#cc4444, 15%);
 }
 </style>
