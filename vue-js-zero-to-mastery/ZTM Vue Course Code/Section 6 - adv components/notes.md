@@ -10,3 +10,21 @@ go into the folder created
     - starts the server
 
 this app doesn't use the compiler in the browser. it precompiles it, saving the client from having to do that
+
+## creating components
+
+- install `Vue VSCode Snippets` extension
+    - Sarah Drasner is the author!
+- in a new vue file, start typing `vue` and the first one in the list is a snippet with template, script, and style tags
+
+
+## loading components
+
+Globally:
+- main.js
+    - import the file that contains the component
+    - add the component to the vm object
+
+Locally:
+- can only be used in the component it's registered in
+    - App.vue, in this case
