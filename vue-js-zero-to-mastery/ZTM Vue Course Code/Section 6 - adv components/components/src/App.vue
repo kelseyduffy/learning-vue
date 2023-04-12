@@ -1,6 +1,11 @@
 <template>
-  <Greeting>  
-  </Greeting>
+  <div>
+    <p>
+      test is this red?
+    </p>
+    <Greeting>  
+    </Greeting>
+  </div>
 </template>
 
 <script>

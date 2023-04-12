@@ -25,6 +25,6 @@ Globally:
     - import the file that contains the component
     - add the component to the vm object
 
-Locally:
+Locally: [Recommended]
 - can only be used in the component it's registered in
     - App.vue, in this case
