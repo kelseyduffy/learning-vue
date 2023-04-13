@@ -9,7 +9,17 @@
 <script>
 export default {
     name: "User",
-    props: ["age"],
+    props: { // prop validation: https://vuejs.org/guide/components/props.html#prop-validation
+        age: {
+            type: Number, // can be array [Number, string]
+            // required: true,
+            // default: 20, // default must be a function if type is set to object or array (?)
+            validator(value) {
+                // true -> validation passes. false -> fails
+                return value < 130
+            }
+        }
+    },
     emits: ["age-change"], // optional practice that helps to document what custom events are emitted
     computed: {
         ageDoubled() {
