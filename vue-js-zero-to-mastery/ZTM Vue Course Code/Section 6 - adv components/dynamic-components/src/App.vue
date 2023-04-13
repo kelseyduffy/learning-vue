@@ -5,8 +5,10 @@
       <option value="About">About</option>
     </select>
 
-    <!-- use the component component to dynamically set which component is rendering in here -->
-    <component :is="componentName"></component>
+    <!-- keep component inside of it inside (stays in memory, not DOM) -->
+    <keep-alive>
+      <component :is="componentName"></component>
+    </keep-alive>
   </div>
 </template>
 
