@@ -52,3 +52,5 @@ send data down to child components.
 mutating the data in the child component doesnt change anything in the parent component
 - can have the child emit a custom event
 - have the parent listen for the custom event
+
+can also make a callback

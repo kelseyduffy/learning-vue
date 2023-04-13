@@ -5,7 +5,7 @@
     <button type="button" @click="age++">Update Age at the parent level</button>
 
     <Greeting :age="age"></Greeting> <!-- can be open/close or self closing -->
-    <User :age="age" @age-change="updateAge"></User> <!-- listens for the custom age-change events -->
+    <User :age="age" @age-change="updateAge" :ageChangeFn="updateAgeCB"></User> <!-- listens for the custom age-change events -->
   </div>
 </template>
 
@@ -26,6 +26,9 @@
     },
     methods: {
       updateAge(num) {
+        this.age += num
+      },
+      updateAgeCB(num) {
         this.age += num
       }
     }

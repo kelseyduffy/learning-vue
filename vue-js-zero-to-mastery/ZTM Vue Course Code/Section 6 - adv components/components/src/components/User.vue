@@ -1,6 +1,7 @@
 <template>
     <div>
         <button type="button" @click="onClickAge">Update Age locally</button>
+        <button type="button" @click="ageChangeFn(3)">Update Age CB</button>
         <p>The user is {{ age }} years old</p>
         <p>Age doubled: {{ ageDoubled }}</p>
     </div>
@@ -18,7 +19,8 @@ export default {
                 // true -> validation passes. false -> fails
                 return value < 130
             }
-        }
+        },
+        ageChangeFn: Function
     },
     emits: ["age-change"], // optional practice that helps to document what custom events are emitted
     computed: {
