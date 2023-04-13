@@ -1,9 +1,10 @@
 <template>
   <div>
-    <h3>
-      test is this red?
-    </h3>
-    <Greeting></Greeting> <!-- can be open/close or self closing -->
+    <h3>test is this red?</h3>
+
+    <button type="button" @click="age++">Update Age at the parent level</button>
+
+    <Greeting :age="age"></Greeting> <!-- can be open/close or self closing -->
     <User :age="age"></User>
   </div>
 </template>

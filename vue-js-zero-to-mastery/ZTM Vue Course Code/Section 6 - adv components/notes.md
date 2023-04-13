@@ -48,3 +48,5 @@ C
 send data down to child components. 
 - Store shared data in parent component
 - send it into the element in the template
+
+mutating the data in the child component doesnt change anything in the parent component
