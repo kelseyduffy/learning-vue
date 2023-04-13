@@ -44,3 +44,7 @@ A (root) -> B
 |  
 v  
 C
+
+send data down to child components. 
+- Store shared data in parent component
+- send it into the element in the template
