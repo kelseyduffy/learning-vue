@@ -11,6 +11,7 @@
       @after-leave="afterLeave"
       @enter-cancelled="enterCancelled"
       @leave-cancelled="leaveCancelled"
+      :css="false"
     >
       <h2 v-if="flag">Hey </h2>
     </transition>
@@ -27,41 +28,55 @@ export default {
   },
   methods: {
     beforeEnter(el) {
-      console.log('before-enter event fired', el)
+      console.log('before-enter event fired', el);
     },
     enter(el, done) {
       // done is a callback function to call whenever you're done with your animation
-      console.log('enter event fired', el)
+      console.log('enter event fired', el);
 
-      done();
+      const animation = el.animate([{ transform: "scale3d(0,0,0)" }, { /* don't need to specify anything here as browser assumes 100% scale */ }], {
+        duration: 1000, // ms
+      });
+
+      // don't call the done function until the animation's actually done, which is notified using the onfinish() function
+      animation.onfinish = () => {
+        done();
+      }
     },
     afterEnter(el) {
-      console.log('after-enter event fired', el)
+      console.log('after-enter event fired', el);
     },
     beforeLeave(el) {
-      console.log('before-leave event fired', el)
+      console.log('before-leave event fired', el);
     },
     leave(el, done) {
-      console.log('leave event fired', el)
+      console.log('leave event fired', el);
 
-      done();
+      const animation = el.animate([{}, { transform: "scale3d(0,0,0)" }], {
+        duration: 1000, // ms
+      });
+
+      // don't call the done function until the animation's actually done, which is notified using the onfinish() function
+      animation.onfinish = () => {
+        done();
+      }
     },
     afterLeave(el) {
-      console.log('after-leave event fired', el)
+      console.log('after-leave event fired', el);
     },
     enterCancelled() {
       // not going to implement anything here, but it's possible to handle animation cancellation
-      console.log('animation was cancelled')
+      console.log('animation was cancelled');
     },
     leaveCancelled() {
-      console.log('animation was cancelled')
+      console.log('animation was cancelled');
     }
   }
 };
 </script>
 
 <style>
-h2 {
+/* h2 {
   width: 400px;
   padding: 20px;
   margin: 20px;
@@ -113,5 +128,5 @@ h2 {
   to {
     transform: scale(0,0);
   }
-}
+} */
 </style>

@@ -36,3 +36,12 @@ hooks:
 - before-enter, enter, after-enter
 - before-leave, leave, after-leave
 
+element is provided by Vue in the hooks
+- don't need to call GetById or anything
+- element provided is a full DOM object
+
+[docs on animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API)
+
+Vue prefers CSS over JS animations
+- it will check for css first
+- you can tell Vue not to check for css animations by using `:css="false"`
