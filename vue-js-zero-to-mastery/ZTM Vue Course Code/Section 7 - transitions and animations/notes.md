@@ -45,3 +45,7 @@ element is provided by Vue in the hooks
 Vue prefers CSS over JS animations
 - it will check for css first
 - you can tell Vue not to check for css animations by using `:css="false"`
+
+Using both
+- use the `name` attribute to let it find the right CSS classes (or leave blank for `v-*`)
+- omit the `done` function callback from the javascript hooks
