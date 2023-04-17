@@ -1,4 +1,4 @@
-## Transitions
+## CSS
 
 Vue handles the addition and removal of classes during the transition periods
 - it does not do the actual animation itself
@@ -23,3 +23,16 @@ transitioning out:
 - everything is the same, but `*-leave-*`
 
 [docs on transitions](https://vuejs.org/guide/built-ins/transition.html)
+
+## JavaScript
+
+hooks:
+- before 
+    - right before it starts
+- enter/leave
+    - during
+- after
+    - right after it's done 
+- before-enter, enter, after-enter
+- before-leave, leave, after-leave
+
