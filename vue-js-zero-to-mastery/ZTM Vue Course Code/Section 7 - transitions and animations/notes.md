@@ -54,3 +54,9 @@ Using both
 
 can wrap the list item in a `<transition-group>` element
 - expose all the same properties from before, except mode is not usable
+
+elements that are being moved because of other items' removals or additions can be animated with `*-move`
+
+## animate.css
+- [main doc](https://cdnjs.com/libraries/animate.css)
+- [animate.style](https://animate.style/)
