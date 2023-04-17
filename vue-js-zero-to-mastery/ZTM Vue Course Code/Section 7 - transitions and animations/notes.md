@@ -56,7 +56,22 @@ can wrap the list item in a `<transition-group>` element
 - expose all the same properties from before, except mode is not usable
 
 elements that are being moved because of other items' removals or additions can be animated with `*-move`
+- `*-move` only triggers against elements that are being moved, which the existing ones below the new item are when a new item is being added
+- when an existing item is removed, it's not removed until its animation is completed, at which point the ones below it jump up, but the animation sequence is complete and no move was called against them
+- setting `*-leave-active` to have `position: absolute` will cause the existing element to lose its position immedaitely, allowing the below elements to `-move` during the transition time, catch that CSS class
 
 ## animate.css
+- predefined css classes for animations
 - [main doc](https://cdnjs.com/libraries/animate.css)
 - [animate.style](https://animate.style/)
+- the names are already set in the css files, so you need to use the name override in the Vue component to point them correctly  
+    ```
+    <transition-group name="fade"
+        enter-from-class=""
+        enter-active-class=""
+        enter-to-class=""
+        leave-from-class=""
+        leave-active-class=""
+        leave-to-class=""
+    >
+    ```
