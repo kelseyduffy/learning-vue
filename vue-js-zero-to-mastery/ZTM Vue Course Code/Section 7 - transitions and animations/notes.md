@@ -49,3 +49,8 @@ Vue prefers CSS over JS animations
 Using both
 - use the `name` attribute to let it find the right CSS classes (or leave blank for `v-*`)
 - omit the `done` function callback from the javascript hooks
+
+## Lists
+
+can wrap the list item in a `<transition-group>` element
+- expose all the same properties from before, except mode is not usable
