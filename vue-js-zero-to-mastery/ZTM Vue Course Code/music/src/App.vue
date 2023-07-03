@@ -265,19 +265,19 @@
       </div>
     </div>
 
-    <app-auth />
+    <auth />
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/AppHeader.vue'
-import AppAuth from '@/components/AppAuth.vue'
+import Auth from '@/components/Auth.vue'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    AppAuth
+    Auth
   }
 }
 </script>
