@@ -12,6 +12,7 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+// https://vee-validate.logaretm.com/v4/
 app.use(VeeValidatePlugin /*, { foo: 100 } */)
 
 app.mount('#app')
