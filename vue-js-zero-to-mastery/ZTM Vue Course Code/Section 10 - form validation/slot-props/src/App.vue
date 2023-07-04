@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <hello-world #default="{ user }">
+    <hello-world #default="{ user, favorites }">
       <p>Hello {{ user.name }}</p>
+      <p>I like {{ favorites[0] }}.</p>
     </hello-world>
   </div>
 </template>

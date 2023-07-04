@@ -1,6 +1,7 @@
 <template>
   <div>
-    <slot :user="user"></slot>
+    <!-- https://vuejs.org/guide/components/slots.html#scoped-slots -->
+    <slot :user="user" :favorites="favorites"></slot>
   </div>
 </template>
 
