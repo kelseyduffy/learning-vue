@@ -57,7 +57,11 @@ export default {
         const message = messages[ctx.rule.name] ?? `The field ${ctx.field} is invalid.`
 
         return message
-      }
+      },
+      validateOnBlur: true, // when user clicks away from something, regardless of whether it's changed or not
+      validateOnChange: true, // when the value has changed
+      validateOnInput: false, // most aggressive trigger for validation
+      validateOnModelUpdate: true // when the value is changed via the property tied to the field
     })
   }
 }
