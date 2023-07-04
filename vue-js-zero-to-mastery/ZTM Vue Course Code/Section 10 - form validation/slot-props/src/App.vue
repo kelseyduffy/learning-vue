@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <hello-world #default="v">
-      <p>Hello {{ v.user.name }}</p>
+    <hello-world #default="{ user }">
+      <p>Hello {{ user.name }}</p>
     </hello-world>
   </div>
 </template>
