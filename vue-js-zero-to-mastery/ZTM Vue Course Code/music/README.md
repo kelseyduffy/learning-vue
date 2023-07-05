@@ -55,3 +55,7 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+### Firebase info
+
+project: [music-ff6fd](https://console.firebase.google.com/u/0/project/music-ff6fd/overview)
