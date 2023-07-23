@@ -272,12 +272,24 @@
 <script>
 import AppHeader from '@/components/AppHeader.vue'
 import Auth from '@/components/Auth.vue'
+import { mapWritableState } from 'pinia'
+import useUserStore from '@/stores/user'
+import { auth } from './includes/firebase'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     Auth
+  },
+  computed: {
+    ...mapWritableState(useUserStore, ['userLoggedIn'])
+  },
+  created() {
+    // Called when app is created. firebase stores user token in browser's indexedDb storage
+    if (auth.currentUser) {
+      this.userLoggedIn = true
+    }
   }
 }
 </script>

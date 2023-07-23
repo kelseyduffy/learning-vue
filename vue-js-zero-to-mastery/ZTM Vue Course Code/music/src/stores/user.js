@@ -8,14 +8,20 @@ export default defineStore('user', {
   actions: {
     async register(values) {
       // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth
-      await auth.createUserWithEmailAndPassword(values.email, values.password)
+      // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#createuserwithemailandpassword
+      const userCred = await auth.createUserWithEmailAndPassword(values.email, values.password)
 
       // token is not available until user is created, so must wait for previous creation to succeed
-      await usersCollection.add({
+      // document name is now the uid of the user that was just created
+      await usersCollection.doc(userCred.user.uid).set({
         name: values.name,
         email: values.email,
         age: values.age,
         country: values.country
+      })
+
+      await userCred.user.updateProfile({
+        displayName: values.name
       })
 
       this.userLoggedIn = true
