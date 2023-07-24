@@ -31,6 +31,12 @@ export default defineStore('user', {
       await auth.signInWithEmailAndPassword(values.email, values.password)
 
       this.userLoggedIn = true
+    },
+    async signOut() {
+      // firebase will delete the token from browser storage and revoke it server side
+      await auth.signOut()
+
+      this.userLoggedIn = false
     }
   }
 })
