@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+
+import '@/index.css'
 import App from './App.vue'
 // could be name '@/App.vue' because vite.config.js defines '@' as 'src' folder
 
