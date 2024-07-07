@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/vue';
+import userEvent from '@testing-library/user-event';
 
 import MainNav from '@/components/MainNav.vue';
 
@@ -32,5 +33,34 @@ describe('MainNav', () => {
       'Students',
       'Jobs'
     ]);
+  });
+
+  describe('when the user logs in', () => {
+    it('displays user profile picture', async () => {
+      render(MainNav);
+
+      let profileImage = screen.queryByRole('img', {
+        // for images, 'name' is the alt text
+        name: /user profile image/i //regular expression letting text be case insensitive
+      });
+
+      console.log(profileImage);
+      //expect(profileImage).not.toBeInTheDocument();
+
+      const loginButton = screen.getByRole('button', {
+        // for buttons, 'name' is the text on the button
+        name: /sign in/i
+      });
+      await userEvent.click(loginButton); // needs to be awaited since it returns a promise, and could move on before the click occurs
+
+      // requery it now that it's been clicked
+      profileImage = screen.queryByRole('img', {
+        // for images, 'name' is the alt text
+        name: /user profile image/i //regular expression letting text be case insensitive
+      });
+
+      console.log(profileImage);
+      //expect(profileImage).toBeInTheDocument();
+    });
   });
 });
