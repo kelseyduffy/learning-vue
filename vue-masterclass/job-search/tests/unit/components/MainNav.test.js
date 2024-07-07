@@ -17,4 +17,20 @@ describe('MainNav', () => {
     console.log(companyName);
     //expect(companyName).toBeInTheDocument();
   });
+
+  it('displays menu items for navigation', () => {
+    render(MainNav);
+    const navigationMenuItems = screen.getAllByRole('listitem');
+    const nagivationMenuTexts = navigationMenuItems.map((item) => item.textContent);
+    console.log(nagivationMenuTexts);
+
+    expect(nagivationMenuTexts).toEqual([
+      'Teams',
+      'Locations',
+      'Life at Bobo Corp',
+      'How we hire',
+      'Students',
+      'Jobs'
+    ]);
+  });
 });
