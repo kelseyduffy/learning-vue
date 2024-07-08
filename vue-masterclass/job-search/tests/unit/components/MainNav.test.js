@@ -6,6 +6,11 @@ import MainNav from '@/components/MainNav.vue';
 describe('MainNav', () => {
   it('displays company name', () => {
     render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      },
       data() {
         return {
           company: 'Super Corp'
@@ -20,7 +25,13 @@ describe('MainNav', () => {
   });
 
   it('displays menu items for navigation', () => {
-    render(MainNav);
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      }
+    });
     const navigationMenuItems = screen.getAllByRole('listitem');
     const nagivationMenuTexts = navigationMenuItems.map((item) => item.textContent);
     console.log(nagivationMenuTexts);
@@ -37,7 +48,13 @@ describe('MainNav', () => {
 
   describe('when the user logs in', () => {
     it('displays user profile picture', async () => {
-      render(MainNav);
+      render(MainNav, {
+        global: {
+          stubs: {
+            FontAwesomeIcon: true
+          }
+        }
+      });
 
       let profileImage = screen.queryByRole('img', {
         // for images, 'name' is the alt text
