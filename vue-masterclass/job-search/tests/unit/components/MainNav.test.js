@@ -4,8 +4,9 @@ import userEvent from '@testing-library/user-event';
 import MainNav from '@/components/MainNav.vue';
 
 describe('MainNav', () => {
-  it('displays company name', () => {
+  const renderMainNav = () => {
     render(MainNav, {
+      // mocks a dom with specifically this component
       global: {
         stubs: {
           FontAwesomeIcon: true
@@ -16,7 +17,11 @@ describe('MainNav', () => {
           company: 'Super Corp'
         };
       }
-    }); // mocks a dom with specifically this component
+    });
+  };
+
+  it('displays company name', () => {
+    renderMainNav();
     //screen.debug(); // can observe the component
     //const companyName = screen.getByText('Bobo Careers');
     const companyName = screen.getByText('Super Corp');
@@ -25,13 +30,7 @@ describe('MainNav', () => {
   });
 
   it('displays menu items for navigation', () => {
-    render(MainNav, {
-      global: {
-        stubs: {
-          FontAwesomeIcon: true
-        }
-      }
-    });
+    renderMainNav();
     const navigationMenuItems = screen.getAllByRole('listitem');
     const nagivationMenuTexts = navigationMenuItems.map((item) => item.textContent);
     console.log(nagivationMenuTexts);
@@ -48,13 +47,7 @@ describe('MainNav', () => {
 
   describe('when the user logs in', () => {
     it('displays user profile picture', async () => {
-      render(MainNav, {
-        global: {
-          stubs: {
-            FontAwesomeIcon: true
-          }
-        }
-      });
+      renderMainNav();
 
       let profileImage = screen.queryByRole('img', {
         // for images, 'name' is the alt text
