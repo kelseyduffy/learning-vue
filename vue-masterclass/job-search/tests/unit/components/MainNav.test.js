@@ -16,7 +16,7 @@ describe('MainNav', () => {
     //const companyName = screen.getByText('Bobo Careers');
     const companyName = screen.getByText('Super Corp');
     console.log(companyName);
-    //expect(companyName).toBeInTheDocument();
+    expect(companyName).toBeInTheDocument();
   });
 
   it('displays menu items for navigation', () => {
@@ -45,7 +45,7 @@ describe('MainNav', () => {
       });
 
       console.log(profileImage);
-      //expect(profileImage).not.toBeInTheDocument();
+      expect(profileImage).not.toBeInTheDocument();
 
       const loginButton = screen.getByRole('button', {
         // for buttons, 'name' is the text on the button
@@ -60,7 +60,7 @@ describe('MainNav', () => {
       });
 
       console.log(profileImage);
-      //expect(profileImage).toBeInTheDocument();
+      expect(profileImage).toBeInTheDocument();
     });
   });
 });
