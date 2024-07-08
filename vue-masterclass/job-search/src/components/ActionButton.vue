@@ -15,7 +15,11 @@ export default {
     type: {
       type: String,
       required: false,
-      default: ''
+      default: 'primary',
+      validator(value) {
+        // failing the validator checks will appear in console logs when app is run
+        return ['primary', 'secondary'].includes(value);
+      }
     }
   },
   computed: {
