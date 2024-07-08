@@ -31,3 +31,14 @@ export const evenOrOdd = (number) => {
 export const multiply = (num1, num2) => {
   return num1 * num2;
 };
+
+/* ------------------------------- */
+
+const favoriteFood = 'sushi';
+
+const goodFoods = {
+  // square brackets let you use a variable for the key name
+  [favoriteFood]: true
+};
+
+console.log(goodFoods);
