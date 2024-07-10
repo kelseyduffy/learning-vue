@@ -42,3 +42,22 @@ const goodFoods = {
 };
 
 console.log(goodFoods);
+
+/* --------------------------------- */
+
+// runs once
+setTimeout(() => {
+  console.log('I will print 2 seconds after the program starts');
+}, 2000);
+
+// runs forever
+const interval = setInterval(() => {
+  console.log('I will print every 2 seconds');
+}, 2000);
+
+console.log(interval);
+
+// stops the interval from running forever
+setTimeout(() => {
+  clearInterval(interval);
+}, 10000);
