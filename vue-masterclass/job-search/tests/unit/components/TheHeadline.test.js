@@ -15,33 +15,33 @@ describe('TheHeadline', () => {
   });
 
   describe('Headline tests', () => {
-    it('displays introductory action verb', () => {
+    beforeEach(() => {
       vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      // revert the mocked timers back to the real timers
+      vi.useRealTimers();
+    });
+    it('displays introductory action verb', () => {
       render(TheHeadline);
 
       const actionPhrase = screen.getByRole('heading', {
         name: /build for everyone/i
       });
       expect(actionPhrase).toBeInTheDocument();
-
-      // revert the mocked timers back to the real timers
-      vi.useRealTimers();
     });
 
     it('changes action verb at a consistent interval', () => {
-      vi.useFakeTimers();
       const mock = vi.fn();
       vi.stubGlobal('setInterval', mock);
 
       render(TheHeadline);
 
       expect(mock).toHaveBeenCalled();
-
-      vi.useRealTimers();
     });
 
     it('swaps action verb after interval', async () => {
-      vi.useFakeTimers();
       render(TheHeadline);
       vi.advanceTimersToNextTimer();
 
@@ -56,19 +56,16 @@ describe('TheHeadline', () => {
       });
 
       expect(actionPhase).toBeInTheDocument();
-
-      vi.useRealTimers();
     });
 
     it('removes interval when component disappears', () => {
-      vi.useFakeTimers();
       const clearInterval = vi.fn();
       vi.stubGlobal('clearInterval', clearInterval);
 
       const { unmount } = render(TheHeadline);
       unmount();
       expect(clearInterval).toHaveBeenCalled();
-      vi.useRealTimers();
+
       vi.unstubAllGlobals();
     });
   });
