@@ -1,7 +1,11 @@
 <template>
   <section>
-    <h1>Build for everyone</h1>
-    <h2>Find your next job at Bobo Corp.</h2>
+    <h1 class="mb-14 text-8xl font-bold tracking-tighter">
+      <span :class="actionClasses">{{ action }}</span>
+      <br />
+      for everyone
+    </h1>
+    <h2 class="text-3xl font-light">Find your next job at Bobo Corp.</h2>
   </section>
 </template>
 
@@ -10,11 +14,50 @@ export default {
   name: 'TheHeadline',
   data() {
     return {
-      sample: 'Hello!'
+      action: 'Build',
+      interval: null
     };
   },
+  computed: {
+    actionClasses() {
+      return {
+        [this.action.toLowerCase()]: true
+      };
+    }
+  },
   created() {
-    console.log("Hey, I've been created. My data exists. Look: ", this.sample);
+    this.changeTitle();
+  },
+  beforeUnmount() {
+    if (this.interval) clearInterval(this.interval);
+  },
+  methods: {
+    changeTitle() {
+      this.interval = setInterval(() => {
+        const actions = ['Build', 'Create', 'Design', 'Code'];
+        const currentActionIndex = actions.indexOf(this.action);
+        const nextActionIndex = (currentActionIndex + 1) % actions.length;
+        this.action = actions[nextActionIndex];
+      }, 3000);
+    }
   }
 };
 </script>
+
+<style scoped>
+.build {
+  color: #1a73e8;
+}
+
+.create {
+  color: #34a853;
+}
+
+.design {
+  color: #f9ab00;
+}
+
+.code {
+  color: #d93025;
+}
+</style>
