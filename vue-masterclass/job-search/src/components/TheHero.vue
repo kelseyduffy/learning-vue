@@ -7,7 +7,12 @@
           <the-headline />
           <job-search-form />
         </div>
-        <div class="col-start-7 col-span-5">5 columns</div>
+        <div class="col-start-7 col-span-5 self-center justify-self-center">
+          <img
+            class="h-80 w-80 object-contain"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/2367px-Vue.js_Logo_2.svg.png"
+          />
+        </div>
         <div class="col-start-12 col-span-1">1 column</div>
       </div>
     </section>
