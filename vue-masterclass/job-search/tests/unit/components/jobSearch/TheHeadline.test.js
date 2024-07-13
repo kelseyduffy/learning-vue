@@ -1,7 +1,7 @@
 import { nextTick } from 'vue';
 import { render, screen } from '@testing-library/vue';
 
-import TheHeadline from '@/components/TheHeadline.vue';
+import TheHeadline from '@/components/jobSearch/TheHeadline.vue';
 
 describe('TheHeadline', () => {
   describe('Vitest playground demoing vi.fn', () => {
