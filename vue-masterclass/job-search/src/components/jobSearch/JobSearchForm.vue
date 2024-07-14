@@ -5,7 +5,7 @@
     <div class="flex flex-1 flex-nowrap h-full text-base font-light">
       <div class="flex h-full flex-1 relative items-center pr-3">
         <label class="absolute left-0 -top-10">Role</label>
-        <text-input placeholder="Software engineer" @handle-input="role = $event" />
+        <text-input placeholder="Software engineer" :value="role" @handle-input="role = $event" />
       </div>
 
       <span
@@ -15,7 +15,7 @@
 
       <div class="flex h-full flex-1 relative items-center pl-3">
         <label class="absolute left-0 -top-10">Where?</label>
-        <text-input placeholder="Los Angeles" @handle-input="location = $event" />
+        <text-input placeholder="Los Angeles" :value="location" @handle-input="location = $event" />
       </div>
     </div>
 
