@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import '@/index.css';
+import router from '@/router'; // It is the default export so we don't need { }'s
 import App from './App.vue';
 // could be name '@/App.vue' because vite.config.js defines '@' as 'src' folder
 
@@ -11,4 +12,4 @@ import App from './App.vue';
 library.add(faSearch);
 
 // name "app" just needs to match the name on the div element in index.html
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app');
+createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app');
