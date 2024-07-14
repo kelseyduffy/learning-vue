@@ -1,20 +1,17 @@
 <template>
   <h1 class="text-6xl font-bold">Job Results Page</h1>
-  <h2>{{ routeObject }}</h2>
-  <h2>{{ routerObject }}</h2>
+  <button @click="goToHome">Go to Home Page</button>
 </template>
 
 <script>
 export default {
   name: 'JobResultsView',
-  computed: {
-    routeObject() {
-      console.log(this.$route);
-      return 'none';
-    },
-    routerObject() {
-      console.log(this.$router);
-      return 'none';
+  methods: {
+    goToHome() {
+      // three options to use push()
+      //this.$router.push('/');
+      //this.$router.push({ path: '/'});
+      this.$router.push({ name: 'Home' });
     }
   }
 };
