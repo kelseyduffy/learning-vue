@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
+import { RouterLinkStub } from '@vue/test-utils';
 
 import MainNav from '@/components/navigation/MainNav.vue';
 
@@ -9,7 +10,8 @@ describe('MainNav', () => {
       // mocks a dom with specifically this component
       global: {
         stubs: {
-          FontAwesomeIcon: true
+          FontAwesomeIcon: true,
+          RouterLink: RouterLinkStub
         }
       },
       data() {
