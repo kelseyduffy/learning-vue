@@ -17,8 +17,8 @@
       >
 
       <div class="flex h-full flex-1 relative items-center pl-3">
-        <label for="location" class="absolute left-0 -top-10">Where?</label>
-        <text-input id="location" v-model="location" placeholder="Los Angeles" />
+        <label for="where" class="absolute left-0 -top-10">Where?</label>
+        <text-input id="where" v-model="location" placeholder="Los Angeles" />
       </div>
     </div>
 
