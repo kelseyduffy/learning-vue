@@ -3,29 +3,28 @@ import { render, screen } from '@testing-library/vue';
 import TheSubnav from '@/components/navigation/TheSubnav.vue';
 
 describe('TheSubnav', () => {
-  describe('when user is on jobs page', () => {
-    it('displays job count', () => {
-      const $route = {
-        name: 'JobResults'
-      };
-
-      render(TheSubnav, {
-        global: {
-          mocks: {
-            // "this.<LHS> replaced with <RHS>"
-            $route
-          },
-          stubs: {
-            // replace any font-awesome-icon component with a lightweight meaningless component
-            FontAwesomeIcon: true
+  const renderTheSubnav = (routeName) => {
+    render(TheSubnav, {
+      global: {
+        mocks: {
+          // "this.<LHS> replaced with <RHS>"
+          $route: {
+            name: routeName
           }
         },
-        data() {
-          return {
-            onJobResultsPage: true
-          };
+        stubs: {
+          // replace any font-awesome-icon component with a lightweight meaningless component
+          FontAwesomeIcon: true
         }
-      });
+      }
+    });
+  };
+
+  describe('when user is on jobs page', () => {
+    it('displays job count', () => {
+      const routeName = 'JobResults';
+
+      renderTheSubnav(routeName);
 
       const jobCount = screen.getByText('1653');
 
@@ -35,18 +34,9 @@ describe('TheSubnav', () => {
 
   describe('when user is not on jobs page', () => {
     it('does not display job count', () => {
-      const $route = {
-        name: 'NotJobResults'
-      };
+      const routeName = 'NotJobResults';
 
-      render(TheSubnav, {
-        global: {
-          mocks: {
-            // "this.<LHS> replaced with <RHS>"
-            $route
-          }
-        }
-      });
+      renderTheSubnav(routeName);
 
       const jobCount = screen.queryByText('1653');
 
