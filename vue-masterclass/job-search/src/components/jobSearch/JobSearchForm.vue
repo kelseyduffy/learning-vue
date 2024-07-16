@@ -8,7 +8,7 @@
     <div class="flex flex-1 flex-nowrap h-full text-base font-light">
       <div class="flex h-full flex-1 relative items-center pr-3">
         <label for="role" class="absolute left-0 -top-10">Role</label>
-        <text-input id="for" v-model="role" placeholder="Software engineer" />
+        <text-input id="role" v-model="role" placeholder="Software engineer" />
       </div>
 
       <span
