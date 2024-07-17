@@ -61,3 +61,12 @@ console.log(interval);
 setTimeout(() => {
   clearInterval(interval);
 }, 10000);
+
+/* ---------------------------------- */
+
+import axios from 'axios';
+
+const url = 'http://localhost:3000/jobs';
+axios.get(url).then((response) => {
+  console.log(response.data);
+});
