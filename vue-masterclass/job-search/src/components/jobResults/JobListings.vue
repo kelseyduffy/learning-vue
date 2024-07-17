@@ -22,11 +22,11 @@ export default {
       jobs: []
     };
   },
-  mounted() {
+  async mounted() {
     const jobsUrl = 'http://localhost:3000/jobs';
-    axios.get(jobsUrl).then((response) => {
-      this.jobs = response.data;
-    });
+
+    const response = await axios.get(jobsUrl);
+    this.jobs = response.data;
   }
 };
 </script>
