@@ -24,12 +24,12 @@ describe('JobListings', () => {
     expect(axios.get).toHaveBeenCalledWith('http://localhost:3000/jobs');
   });
 
-  it('creates a job listing for every job', async () => {
+  it('displays a maximum of 10 jobs', async () => {
     axios.get.mockResolvedValue({ data: Array(15).fill({}) });
     renderJobListings();
 
     // get<action> is synchronous, find<action> is async
     const jobListings = await screen.findAllByRole('listitem');
-    expect(jobListings).toHaveLength(15);
+    expect(jobListings).toHaveLength(10);
   });
 });

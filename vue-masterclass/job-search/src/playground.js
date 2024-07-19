@@ -64,19 +64,27 @@ setTimeout(() => {
 
 /* ---------------------------------- */
 
-import axios from 'axios';
+// import axios from 'axios';
 
-const url = 'http://localhost:3000/jobs';
+// const url = 'http://localhost:3000/jobs';
 
-const fetchJobsV1 = () => {
-  axios.get(url).then((response) => {
-    console.log(response.data);
-  });
-};
+// const fetchJobsV1 = () => {
+//   axios.get(url).then((response) => {
+//     console.log(response.data);
+//   });
+// };
 
-const fetchJobsV2 = async () => {
-  const response = await axios.get(url);
-  console.log(response.data);
-};
+// const fetchJobsV2 = async () => {
+//   const response = await axios.get(url);
+//   console.log(response.data);
+// };
 
-fetchJobsV2();
+// fetchJobsV2();
+
+/* --------------------------------- */
+
+const sushi = ['Tuna', 'Salmon', 'Yellowtail', 'Eel', 'Shrimp', 'Octopus', 'Uni'];
+
+console.log(sushi.slice()); // everything
+console.log(sushi.slice(4)); // everything index 4 -> end
+console.log(sushi.slice(2, 4)); // everything index 2 -> 3
