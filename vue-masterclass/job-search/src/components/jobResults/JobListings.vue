@@ -22,7 +22,12 @@ export default {
   },
   computed: {
     displayedJobs() {
-      return this.jobs.slice(0, 10);
+      const pageString = this.$route.query.page || '1'; // fall back to page 1 if not specified in route
+      const pageNumber = Number.parseInt(pageString);
+      const pageSize = 10;
+      const firstJobIndex = (pageNumber - 1) * pageSize;
+      const lastJobIndex = pageNumber * pageSize;
+      return this.jobs.slice(firstJobIndex, lastJobIndex);
     }
   },
   async mounted() {
