@@ -79,7 +79,7 @@ describe('MainNav', () => {
         // for buttons, 'name' is the text on the button
         name: /sign in/i
       });
-      userStore.isLoggedIn = true;
+      userStore.isLoggedIn = true; // manually run the store action
       await userEvent.click(loginButton); // needs to be awaited since it returns a promise, and could move on before the click occurs
 
       // requery it now that it's been clicked
