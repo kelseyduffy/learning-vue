@@ -67,8 +67,14 @@ export default {
     }
   },
   async mounted() {
-    const jobsUrl = 'http://localhost:3000/jobs';
+    /*
+    -- development --> hot module reloading
+    -- production -> reduce file size
+    -- test
 
+    */
+    const baseUrl = import.meta.env.VITE_APP_API_URL;
+    const jobsUrl = `${baseUrl}/jobs`;
     const response = await axios.get(jobsUrl);
     this.jobs = response.data;
   }
