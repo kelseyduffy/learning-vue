@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -11,5 +12,7 @@ import App from './App.vue';
 // add the search maginifying glass to the library of available icons
 library.add(faSearch);
 
+const pinia = createPinia();
+
 // name "app" just needs to match the name on the div element in index.html
-createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app');
+createApp(App).use(pinia).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app');
