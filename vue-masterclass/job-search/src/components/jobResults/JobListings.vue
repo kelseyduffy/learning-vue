@@ -31,18 +31,15 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia';
+
 import JobListing from '@/components/jobResults/JobListing.vue';
-import axios from 'axios';
+import { useJobsStore, FETCH_JOBS } from '@/stores/jobs';
 
 export default {
   name: 'JobListings',
   components: {
     JobListing
-  },
-  data() {
-    return {
-      jobs: []
-    };
   },
   computed: {
     currentPage() {
@@ -52,19 +49,20 @@ export default {
       const previousPage = this.currentPage - 1;
       return previousPage >= 1 ? previousPage : undefined;
     },
-    maxPage() {
-      return Math.ceil(this.jobs.length / 10);
-    },
-    nextPage() {
-      const nextPage = this.currentPage + 1;
-      return nextPage <= this.maxPage ? nextPage : undefined;
-    },
-    displayedJobs() {
-      const pageSize = 10;
-      const firstJobIndex = (this.currentPage - 1) * pageSize;
-      const lastJobIndex = this.currentPage * pageSize;
-      return this.jobs.slice(firstJobIndex, lastJobIndex);
-    }
+    ...mapState(useJobsStore, {
+      jobs: 'jobs',
+      // we need to pull these three into mapState since it references this.jobs
+      nextPage() {
+        const nextPage = this.currentPage + 1;
+        return nextPage <= Math.ceil(this.jobs.length / 10) ? nextPage : undefined;
+      },
+      displayedJobs() {
+        const pageSize = 10;
+        const firstJobIndex = (this.currentPage - 1) * pageSize;
+        const lastJobIndex = this.currentPage * pageSize;
+        return this.jobs.slice(firstJobIndex, lastJobIndex);
+      }
+    })
   },
   async mounted() {
     /*
@@ -73,10 +71,10 @@ export default {
     -- test
 
     */
-    const baseUrl = import.meta.env.VITE_APP_API_URL;
-    const jobsUrl = `${baseUrl}/jobs`;
-    const response = await axios.get(jobsUrl);
-    this.jobs = response.data;
+    this.FETCH_JOBS();
+  },
+  methods: {
+    ...mapActions(useJobsStore, [FETCH_JOBS])
   }
 };
 </script>

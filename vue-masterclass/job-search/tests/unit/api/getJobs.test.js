@@ -16,7 +16,7 @@ describe('getJobs', () => {
     });
   });
   it('fetches jobs that candidates can apply to', async () => {
-    const url = 'http://myfakeapi.com/jobs';
+    const url = 'http://myfakeapi.com:3000/jobs';
 
     await getJobs();
     expect(axios.get).toHaveBeenCalledWith(url);

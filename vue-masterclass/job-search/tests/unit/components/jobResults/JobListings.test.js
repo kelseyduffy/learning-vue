@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/vue';
 import { RouterLinkStub } from '@vue/test-utils';
 import axios from 'axios';
 
-import JobListings from '@/components/JobResults/JobListings.vue';
+import JobListings from '@/components/jobResults/JobListings.vue';
 
 vi.mock('axios');
 //console.log(axios); // console log shows the difference between normal axios and mock axios object
