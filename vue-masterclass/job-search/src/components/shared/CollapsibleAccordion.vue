@@ -10,7 +10,9 @@
     </div>
 
     <div v-if="isOpen" class="mt-5 w-full">
-      <slot></slot>
+      <slot>
+        <p>Placeholder text for no slot passed in</p>
+      </slot>
     </div>
   </div>
 </template>
