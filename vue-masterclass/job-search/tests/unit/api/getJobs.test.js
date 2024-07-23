@@ -5,10 +5,25 @@ import getJobs from '@/api/getJobs';
 vi.mock('axios');
 
 describe('getJobs', () => {
-  it('fetches job that candidates can apply to', async () => {
-    const url = 'http://myfakeapi.com/jobs';
+  beforeEach(() => {
+    axios.get.mockResolvedValue = {
+      data: [
+        {
+          id: 1,
+          title: 'Java Engineer'
+        }
+      ]
+    };
+  });
+  it('fetches jobs that candidates can apply to', async () => {
+    const url = 'http://myfakeapi.com:3000/jobs';
 
     await getJobs();
     expect(axios.get).toHaveBeenCalledWith(url);
+  });
+
+  it('extracts jobs from response', async () => {
+    const data = await getJobs();
+    expect(data).toEqual([{ id: 1, title: 'Java Engineer' }]);
   });
 });
