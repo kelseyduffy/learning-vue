@@ -88,3 +88,15 @@ const sushi = ['Tuna', 'Salmon', 'Yellowtail', 'Eel', 'Shrimp', 'Octopus', 'Uni'
 console.log(sushi.slice()); // everything
 console.log(sushi.slice(4)); // everything index 4 -> end
 console.log(sushi.slice(2, 4)); // everything index 2 -> 3
+
+/* --------------------------------- */
+
+// sets
+
+const numberset = new Set();
+numberset.add(5);
+numberset.add(10);
+numberset.add(15);
+numberset.add(15); // not added a second time since it's already in
+
+console.log(numberset);
