@@ -50,18 +50,15 @@ export const useJobsStore = defineStore('jobs', {
     },
     [FILTERED_JOBS](state) {
       const userStore = useUserStore();
+      const noSelectedOrganizations = userStore.selectedOrganizations.length === 0;
+      const noSelectedJobTypes = userStore.selectedJobTypes.length === 0;
 
       return state.jobs
         .filter(
           (job) =>
-            userStore.selectedOrganizations.length === 0 ||
-            userStore.selectedOrganizations.includes(job.organization)
+            noSelectedOrganizations || userStore.selectedOrganizations.includes(job.organization)
         )
-        .filter(
-          (job) =>
-            userStore.selectedJobTypes.length === 0 ||
-            userStore.selectedJobTypes.includes(job.jobType)
-        );
+        .filter((job) => noSelectedJobTypes || userStore.selectedJobTypes.includes(job.jobType));
     }
   }
 });
