@@ -34,7 +34,7 @@
 import { mapActions, mapState } from 'pinia';
 
 import JobListing from '@/components/jobResults/JobListing.vue';
-import { useJobsStore, FETCH_JOBS } from '@/stores/jobs';
+import { useJobsStore, FETCH_JOBS, FILTERED_JOBS_BY_ORGANIZATIONS } from '@/stores/jobs';
 
 export default {
   name: 'JobListings',
@@ -50,17 +50,19 @@ export default {
       return previousPage >= 1 ? previousPage : undefined;
     },
     ...mapState(useJobsStore, {
-      jobs: 'jobs',
+      FILTERED_JOBS_BY_ORGANIZATIONS,
       // we need to pull these three into mapState since it references this.jobs
       nextPage() {
         const nextPage = this.currentPage + 1;
-        return nextPage <= Math.ceil(this.jobs.length / 10) ? nextPage : undefined;
+        return nextPage <= Math.ceil(this.FILTERED_JOBS_BY_ORGANIZATIONS.length / 10)
+          ? nextPage
+          : undefined;
       },
       displayedJobs() {
         const pageSize = 10;
         const firstJobIndex = (this.currentPage - 1) * pageSize;
         const lastJobIndex = this.currentPage * pageSize;
-        return this.jobs.slice(firstJobIndex, lastJobIndex);
+        return this.FILTERED_JOBS_BY_ORGANIZATIONS.slice(firstJobIndex, lastJobIndex);
       }
     })
   },
