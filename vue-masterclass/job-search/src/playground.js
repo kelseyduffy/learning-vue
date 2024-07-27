@@ -100,3 +100,16 @@ numberset.add(15);
 numberset.add(15); // not added a second time since it's already in
 
 console.log(numberset);
+
+/* --------------------------------- */
+
+const numbers2 = [1, 3, 5, 4, 2, 6, 7, 3, 9, 124, 21];
+console.log(numbers2.filter((number) => number > 6));
+
+const jobs = [
+  { title: 'angular dev', organization: 'microsoft' },
+  { title: 'programmer dev', organization: 'google' },
+  { title: 'developer', organization: 'microsoft' }
+];
+
+console.log(jobs.filter((job) => job.organization === 'microsoft'));
