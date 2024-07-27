@@ -8,10 +8,10 @@ import { useUserStore } from '@/stores/user';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 describe('JobFiltersSidebarOrganizations', () => {
-  it('renders unique list of organizations from jobs', async () => {
+  const renderJobFiltersSidebarOrganizations = () => {
     const pinia = createTestingPinia();
+    const userStore = useUserStore();
     const jobsStore = useJobsStore();
-    jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Microsoft']);
 
     render(JobFiltersSidebarOrganizations, {
       global: {
@@ -21,6 +21,12 @@ describe('JobFiltersSidebarOrganizations', () => {
         }
       }
     });
+
+    return { jobsStore, userStore };
+  };
+  it('renders unique list of organizations from jobs', async () => {
+    const { jobsStore } = renderJobFiltersSidebarOrganizations();
+    jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Microsoft']);
 
     const button = screen.getByRole('button', { name: /organizations/i });
     await userEvent.click(button);
@@ -31,19 +37,8 @@ describe('JobFiltersSidebarOrganizations', () => {
   });
 
   it('communicates that user has selected checkbox for organization', async () => {
-    const pinia = createTestingPinia();
-    const userStore = useUserStore();
-    const jobsStore = useJobsStore();
+    const { jobsStore, userStore } = renderJobFiltersSidebarOrganizations();
     jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Microsoft']);
-
-    render(JobFiltersSidebarOrganizations, {
-      global: {
-        plugins: [pinia],
-        stubs: {
-          FontAwesomeIcon: true
-        }
-      }
-    });
 
     const button = screen.getByRole('button', { name: /organizations/i });
     await userEvent.click(button);
