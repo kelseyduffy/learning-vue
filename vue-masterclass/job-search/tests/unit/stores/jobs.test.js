@@ -84,6 +84,29 @@ describe('getters', () => {
     });
   });
 
+  describe('FILTERED_JOBS_BY_JOB_TYPES', () => {
+    it('identifies jobs that are associated with the given job types', () => {
+      const jobsStore = useJobsStore();
+      jobsStore.jobs = [
+        { jobType: 'part-time' },
+        { jobType: 'full-time' },
+        { jobType: 'intern' },
+        { jobType: 'intern' }
+      ];
+
+      const userStore = useUserStore();
+      userStore.selectedJobTypes = ['intern', 'full-time'];
+
+      const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES;
+
+      expect(result).toEqual([
+        { jobType: 'full-time' },
+        { jobType: 'intern' },
+        { jobType: 'intern' }
+      ]);
+    });
+  });
+
   describe('when the user has not selected any organizations', () => {
     it('returns all jobs', () => {
       const jobsStore = useJobsStore();
@@ -102,6 +125,30 @@ describe('getters', () => {
         { organization: 'Google' },
         { organization: 'Microsoft' },
         { organization: 'OSIsoft' }
+      ]);
+    });
+  });
+
+  describe('when the user has not selected any job types', () => {
+    it('returns all jobs', () => {
+      const jobsStore = useJobsStore();
+      jobsStore.jobs = [
+        { jobType: 'part-time' },
+        { jobType: 'full-time' },
+        { jobType: 'intern' },
+        { jobType: 'intern' }
+      ];
+
+      const userStore = useUserStore();
+      userStore.selectedJobTypes = [];
+
+      const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES;
+
+      expect(result).toEqual([
+        { jobType: 'part-time' },
+        { jobType: 'full-time' },
+        { jobType: 'intern' },
+        { jobType: 'intern' }
       ]);
     });
   });
