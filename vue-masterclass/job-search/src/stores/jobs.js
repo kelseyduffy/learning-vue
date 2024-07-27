@@ -51,21 +51,17 @@ export const useJobsStore = defineStore('jobs', {
     [FILTERED_JOBS](state) {
       const userStore = useUserStore();
 
-      let filteredJobs = state.jobs;
-
-      if (userStore.selectedOrganizations.length > 0) {
-        filteredJobs = filteredJobs.filter((job) =>
-          userStore.selectedOrganizations.includes(job.organization)
+      return state.jobs
+        .filter(
+          (job) =>
+            userStore.selectedOrganizations.length === 0 ||
+            userStore.selectedOrganizations.includes(job.organization)
+        )
+        .filter(
+          (job) =>
+            userStore.selectedJobTypes.length === 0 ||
+            userStore.selectedJobTypes.includes(job.jobType)
         );
-      }
-
-      if (userStore.selectedJobTypes.length > 0) {
-        filteredJobs = filteredJobs.filter((job) =>
-          userStore.selectedJobTypes.includes(job.jobType)
-        );
-      }
-
-      return filteredJobs;
     }
   }
 });
