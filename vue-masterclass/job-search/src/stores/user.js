@@ -5,7 +5,8 @@ export const ADD_SELECTED_ORGANIZATIONS = 'ADD_SELECTED_ORGANIZATIONS';
 export const useUserStore = defineStore('user', {
   state: () => ({
     isLoggedIn: false,
-    selectedOrganizations: []
+    selectedOrganizations: [],
+    selectedJobTypes: []
   }),
   actions: {
     loginUser() {
