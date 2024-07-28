@@ -66,6 +66,86 @@ describe('getters', () => {
     });
   });
 
+  describe('INCLUDE_JOB_BY_ORGANIZATION', () => {
+    describe('when the user has not selected any organizations', () => {
+      it('includes job', () => {
+        const userStore = useJobsStore();
+        userStore.selectedOrganizations = [];
+
+        const jobsStore = useJobsStore();
+        const job = { organization: 'Google' };
+
+        const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job);
+
+        expect(result).toBe(true);
+      });
+    });
+
+    it('identifies if job is associated with given organizations', () => {
+      const userStore = useJobsStore();
+      userStore.selectedOrganizations = ['Google', 'Microsoft'];
+
+      const jobsStore = useJobsStore();
+      const job = { organization: 'Google' };
+
+      const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job);
+
+      expect(result).toBe(true);
+    });
+
+    it('identifies if job is not associated with given organizations', () => {
+      const userStore = useUserStore();
+      userStore.selectedOrganizations = ['Google', 'Microsoft'];
+
+      const jobsStore = useJobsStore();
+      const job = { organization: 'OSIsoft' };
+
+      const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job);
+
+      expect(result).toBe(false);
+    });
+  });
+
+  describe('INCLUDE_JOB_BY_JOB_TYPE', () => {
+    describe('when the user has not selected any job types', () => {
+      it('includes job', () => {
+        const userStore = useJobsStore();
+        userStore.selectedJobTypes = [];
+
+        const jobsStore = useJobsStore();
+        const job = { jobType: 'intern' };
+
+        const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job);
+
+        expect(result).toBe(true);
+      });
+    });
+
+    it('identifies if job is associated with given organizations', () => {
+      const userStore = useJobsStore();
+      userStore.selectedJobTypes = ['intern', 'full-time'];
+
+      const jobsStore = useJobsStore();
+      const job = { jobType: 'intern' };
+
+      const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job);
+
+      expect(result).toBe(true);
+    });
+
+    it('identifies if job is not associated with given organizations', () => {
+      const userStore = useUserStore();
+      userStore.selectedJobTypes = ['intern', 'full-time'];
+
+      const jobsStore = useJobsStore();
+      const job = { jobType: 'part-time' };
+
+      const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job);
+
+      expect(result).toBe(false);
+    });
+  });
+
   describe('FILTERED_JOBS_BY_ORGANIZATIONS', () => {
     it('identifies jobs that are associated with the given organizations', () => {
       const jobsStore = useJobsStore();
