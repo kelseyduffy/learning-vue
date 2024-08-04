@@ -1,6 +1,9 @@
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 
+import { useRouter } from 'vue-router';
+vi.mock('vue-router');
+
 import JobSearchForm from '@/components/jobSearch/JobSearchForm.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -8,13 +11,10 @@ describe('JobSearchForm', () => {
   describe('when user submits form', () => {
     it("directs user to job results page with user's search parameters", async () => {
       const push = vi.fn();
-      const $router = { push };
+      useRouter.mockReturnValue({ push });
 
       render(JobSearchForm, {
         global: {
-          mocks: {
-            $router
-          },
           stubs: {
             FontAwesomeIcon: true
           }
