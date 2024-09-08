@@ -39,3 +39,9 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+### Run the backend API service
+
+```sh
+npm run backend
+```
