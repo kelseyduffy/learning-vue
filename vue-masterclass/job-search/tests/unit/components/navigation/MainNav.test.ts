@@ -1,3 +1,4 @@
+import type { Mock } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import { RouterLinkStub } from '@vue/test-utils';
@@ -9,12 +10,14 @@ vi.mock('vue-router');
 import MainNav from '@/components/navigation/MainNav.vue';
 import { useUserStore } from '@/stores/user';
 
+const useRouteMock = useRoute as Mock;
+
 describe('MainNav', () => {
   const renderMainNav = () => {
     // stubActions = false uses a real user store instead of mocking it out
     // const pinia = createTestingPinia({ stubActions: false });
 
-    useRoute.mockReturnValue({ name: 'Home' });
+    useRouteMock.mockReturnValue({ name: 'Home' });
 
     const pinia = createTestingPinia();
 
@@ -29,7 +32,7 @@ describe('MainNav', () => {
       },
       data() {
         return {
-          company: 'Super Corp'
+          company: 'Bobo Careers'
         };
       }
     });
@@ -38,8 +41,7 @@ describe('MainNav', () => {
   it('displays company name', () => {
     renderMainNav();
     //screen.debug(); // can observe the component
-    //const companyName = screen.getByText('Bobo Careers');
-    const companyName = screen.getByText('Super Corp');
+    const companyName = screen.getByText('Bobo Careers');
     console.log(companyName);
     expect(companyName).toBeInTheDocument();
   });

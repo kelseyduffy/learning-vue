@@ -8,6 +8,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["vitest/globals", "@testing-library/jest-dom"]
+    "moduleResolution": "node",
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
+    "allowSyntheticDefaultImports": true
   }
 }

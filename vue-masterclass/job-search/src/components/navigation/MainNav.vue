@@ -25,64 +25,34 @@
   </header>
 </template>
 
-<script>
-import { mapState, mapActions } from 'pinia';
+<script lang="ts" setup>
+import { computed, ref } from 'vue';
+
 import { useUserStore } from '@/stores/user';
+
 import ActionButton from '@/components/shared/ActionButton.vue';
 import ProfileImage from '@/components/navigation/ProfileImage.vue';
 import TheSubnav from '@/components/navigation/TheSubnav.vue';
 
-export default {
-  name: 'MainNav',
-  components: {
-    ActionButton,
-    ProfileImage,
-    TheSubnav
-  },
-  data() {
-    return {
-      company: 'Bobo Careers',
-      menuItems: [
-        {
-          text: 'Teams',
-          url: '/teams'
-        },
-        {
-          text: 'Locations',
-          url: '/'
-        },
-        {
-          text: 'Life at Bobo Corp',
-          url: '/'
-        },
-        {
-          text: 'How we hire',
-          url: '/'
-        },
-        {
-          text: 'Students',
-          url: '/'
-        },
-        {
-          text: 'Jobs',
-          url: '/jobs/results'
-        }
-      ]
-    };
-  },
-  computed: {
-    ...mapState(useUserStore, ['isLoggedIn']),
-    headerHeightClass() {
-      return {
-        'h-16': !this.isLoggedIn, // equivalent to 64px
-        'h-32': this.isLoggedIn
-      };
-    }
-  },
-  methods: {
-    ...mapActions(useUserStore, ['loginUser'])
-  }
-};
+const menuItems = ref([
+  { text: 'Teams', url: '/teams' },
+  { text: 'Locations', url: '/' },
+  { text: 'Life at Bobo Corp', url: '/' },
+  { text: 'How we hire', url: '/' },
+  { text: 'Students', url: '/' },
+  { text: 'Jobs', url: '/jobs/results' }
+]);
+
+const userStore = useUserStore();
+const loginUser = userStore.loginUser;
+const isLoggedIn = computed(() => userStore.isLoggedIn);
+
+const headerHeightClass = computed(() => ({
+  'h-16': !isLoggedIn.value, // equivalent to 64px
+  'h-32': isLoggedIn.value
+}));
+
+const company = ref('Bobo Careers');
 </script>
 
 <style></style>
