@@ -124,7 +124,7 @@ describe('getters', () => {
       });
     });
 
-    it('identifies if job is associated with given organizations', () => {
+    it('identifies if job is associated with given job types', () => {
       const userStore = useUserStore();
       userStore.selectedJobTypes = ['intern', 'full-time'];
 
@@ -136,7 +136,7 @@ describe('getters', () => {
       expect(result).toBe(true);
     });
 
-    it('identifies if job is not associated with given organizations', () => {
+    it('identifies if job is not associated with given job types', () => {
       const userStore = useUserStore();
       userStore.selectedJobTypes = ['intern', 'full-time'];
 
@@ -147,5 +147,45 @@ describe('getters', () => {
 
       expect(result).toBe(false);
     });
+  });
+});
+
+describe('INCLUDE_JOB_BY_DEGREE', () => {
+  describe('when the user has not selected any degrees', () => {
+    it('includes job', () => {
+      const userStore = useUserStore();
+      userStore.selectedDegrees = [];
+
+      const jobsStore = useJobsStore();
+      const job = createJob();
+
+      const result = jobsStore.INCLUDE_JOB_BY_DEGREE(job);
+
+      expect(result).toBe(true);
+    });
+  });
+
+  it('identifies if job is associated with given degrees', () => {
+    const userStore = useUserStore();
+    userStore.selectedDegrees = ["Master's"];
+
+    const jobsStore = useJobsStore();
+    const job = createJob({ degree: "Master's" });
+
+    const result = jobsStore.INCLUDE_JOB_BY_DEGREE(job);
+
+    expect(result).toBe(true);
+  });
+
+  it('identifies if job is not associated with given degree', () => {
+    const userStore = useUserStore();
+    userStore.selectedDegrees = ["Bachelor's"];
+
+    const jobsStore = useJobsStore();
+    const job = createJob({ degree: "Master's" });
+
+    const result = jobsStore.INCLUDE_JOB_BY_DEGREE(job);
+
+    expect(result).toBe(false);
   });
 });
